@@ -1,14 +1,14 @@
 // Calculadora en JOptionPane
 // Autor : Daniel Achiri 
 import javax.swing.*;
-public class calculadora {
+public class Calculadora {
     public static void main(String[] args){
         boolean confirmacion = true;
         double num1 = 0, num2, resultado = 0;
         int seleccion;
         boolean conservar = false, operador_validez = true;
         String num1_string, operacion;
-        JOptionPane.showMessageDialog(null, "---Bienvenido a la Calculadora---\n-Solo dos numeros.\n-Operaciones: Suma, Resta, Multiplicasion, Divicion, Porcentaje y Modulo"
+        JOptionPane.showMessageDialog(null, "---Bienvenido a la Calculadora---\n-Solo dos numeros.\n-Operaciones: Suma, Resta, Multiplicación, Divición, Porcentaje y Módulo"
         +"\n-Se puede conservar o descartar un numero despues de una operacion");
         while (confirmacion) {
             if (conservar){
@@ -18,24 +18,24 @@ public class calculadora {
                 num1_string = JOptionPane.showInputDialog("Ingrese el primer numero: ");
                 num1 = Double.parseDouble(num1_string);
             }
-            operacion = JOptionPane.showInputDialog("Ingrese la operacion\nSuma( + )\nResta( - )\nMultiplicacion( * )\nDivision( / )\nPorcentaje ( % )\nMudulo( mod )");
+            operacion = (JOptionPane.showInputDialog("Ingrese la operacion\nSuma( + )\nResta( - )\nMultiplicación( * )\nDivición( / )\nPorcentaje ( % )\nMódulo( mod )").trim());
             num2 = input_numero2("Ingrese el segundo numero");
             switch (operacion) {
-                case "+" : ///////
+                case "+" :
                 resultado = num1 + num2;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                case "-" : ///////
+                ////////////////////////
+                case "-" : 
                 resultado = num1 - num2;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                case "*" : ////////
+                //////////////////////
+                case "*" : 
                 case "x" :
                 case "X" :
                 resultado = num1*num2;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                case "/" : ////////
+                ///////////////////////
+                case "/" : 
                 while (true) {
                     if (num2 == 0){
                         num2 = input_numero2("Numero invalido (no se puede dividir entre 0).\nIngrese el segundo numero"); 
@@ -45,22 +45,22 @@ public class calculadora {
                     }
                 }
                 resultado = num1 /num2 ;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                case "%" :  ///////////
+                /////////////////////////
+                case "%" :  
                 resultado = num1/100 * num2;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                case "mod" : ///////////
+                //////////////////////////
+                case "mod" : 
                 resultado = num1 % num2;
-                JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
                 break;
-                /////////////////////
+                ////////////////////////
                 default :
                 JOptionPane.showMessageDialog(null, "Operador invalido");
                 operador_validez = false;
                 break;
             }
+            JOptionPane.showMessageDialog(null, "El resultado es: "+resultado);
             seleccion = JOptionPane.showConfirmDialog(null, "¿Quieres hacer otra operacion?", "Confirmacion", JOptionPane.YES_NO_OPTION);
             confirmacion = (seleccion == JOptionPane.YES_OPTION);
             if (confirmacion && operador_validez){
@@ -69,6 +69,7 @@ public class calculadora {
             }
             operador_validez = true;
         }
+        JOptionPane.showMessageDialog(null, "¡Gracias por usar la calculadora!");
     }
     public static double input_numero2(String texto){
         String numero_string = JOptionPane.showInputDialog(texto);
